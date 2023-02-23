@@ -1,0 +1,32 @@
+@font-face {
+    font-family: poppines;
+    src: url(../../../Static/Poppins-Regular.ttf);
+}
+
+.home{
+    height: 100%;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1.6rem;
+    padding-top: 7rem;
+    color: var(--text-black-white);
+    font-family: poppines, sans-serif;
+    background-color: var(--part1-background);
+}
+
+.home>button{
+    display: block;
+    box-sizing: border-box; 
+    background-color: #4a3d80; 
+    border-radius: 5px; 
+    color: white; 
+    padding: 10px 24px; 
+    font-family: sans-serif; 
+    font-weight: 600; 
+    border: 1.5px solid white; 
+    text-decoration: none; 
+    cursor: pointer;
+}

@@ -1,0 +1,12 @@
+.landing{
+    height: 100%;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 1.6rem;
+    padding-top: 7rem;
+    color: var(--text-black-white);
+    font-family: poppines, sans-serif;
+    background-color: var(--part1-background);
+}

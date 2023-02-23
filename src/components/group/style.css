@@ -1,0 +1,47 @@
+.css-156jnpb-MuiSpeedDialIcon-root .MuiSpeedDialIcon-icon {
+    height: 2rem;
+    width: 2rem;
+}
+
+#SpeedDialtooltipexample-action-3-label{
+    font-size: 1.3rem;
+}
+
+#SpeedDialtooltipexample-action-1-label{
+    font-size: 1.3rem;
+}
+
+#SpeedDialtooltipexample-action-2-label{
+    font-size: 1.3rem;
+}
+
+#SpeedDialtooltipexample-action-0-label{
+    font-size: 1.3rem;
+}
+
+.css-raiqh1-MuiTypography-root-MuiDayPicker-weekDayLabel {
+    font-size: 1.4rem !important;
+}
+
+.css-jro82b-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button .css-i4bv87-MuiSvgIcon-root, .css-1ae9t7h-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button .css-i4bv87-MuiSvgIcon-root {
+    width: 2rem;
+    height: 2rem;
+}
+
+.css-nk89i7-MuiPickersCalendarHeader-root > .css-10fao8b-MuiPickersCalendarHeader-labelContainer {
+    font-size: 1.6rem !important;
+}
+
+.css-12mkn7b-MuiButtonBase-root-MuiIconButton-root-MuiPickersCalendarHeader-switchViewButton > .css-118r9cm-MuiSvgIcon-root-MuiPickersCalendarHeader-switchViewIcon,.css-12mkn7b-MuiButtonBase-root-MuiIconButton-root-MuiPickersCalendarHeader-switchViewButton>.css-1tkx1wf-MuiSvgIcon-root-MuiPickersCalendarHeader-switchViewIcon {
+    display: none;
+}
+
+.css-xelq0e-MuiPickerStaticWrapper-content {
+    border-radius: 1rem;
+    box-shadow: 0px 1px 3px var(--box-shadow);
+}
+
+.css-nk89i7-MuiPickersCalendarHeader-root {
+    padding: 1rem;
+    border-bottom: 1.5px solid #ddd7d7;
+}

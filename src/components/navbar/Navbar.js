@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { Avatar, Drawer } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Avatar} from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Skeleton from "@mui/material/Skeleton";
 import ToggleOffOutlinedIcon from "@mui/icons-material/ToggleOffOutlined";
@@ -10,17 +10,20 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../context/UseUserAuth";
-import DehazeIcon from "@mui/icons-material/Dehaze";
+import Logout from "@mui/icons-material/Logout";
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import Profile from "./Profile";
 
-const Navbar = ({ switchTheme, theme}) => {
+const Navbar = ({ switchTheme, theme }) => {
   const navigate = useNavigate();
-  const { isLoggedIn, setIsLoggedIn, user } = useUserAuth();
+  const { isLoggedIn, setIsLoggedIn, user, image } = useUserAuth();
   const [userProfile, setUserProfile] = useState({
     username: null,
     email: null,
   });
   const [open, setOpen] = React.useState(false);
-  const [openDrawer, setOpenDrawer] = React.useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
 
   useEffect(() => {
     // console.log(isLoggedIn);
@@ -29,9 +32,12 @@ const Navbar = ({ switchTheme, theme}) => {
     } else {
       setUserProfile(null);
     }
+
+    
   }, [isLoggedIn, user]);
 
-  useEffect(() => {}, [userProfile]);
+  useEffect(() => {
+  }, [userProfile]);
 
   const handleClick = () => {
     setOpen((prev) => !prev);
@@ -39,6 +45,13 @@ const Navbar = ({ switchTheme, theme}) => {
 
   const handleClickAway = () => {
     setOpen(false);
+  };
+  const handleOpenProfile = () => {
+    setOpenProfile(true);
+  };
+
+  const handleCloseProfile = () => {
+    setOpenProfile(false);
   };
 
   const logoutHandle = () => {
@@ -61,29 +74,6 @@ const Navbar = ({ switchTheme, theme}) => {
   return (
     <div className="navbar">
       <div className="app-name">
-        <Fragment>
-          <div className="arrowIcon">
-            <DehazeIcon
-              onClick={toggleDrawer(true)}
-              sx={{
-                fontSize: "2rem",
-                padding: "0 1rem"
-              }}
-            />
-          </div>
-          <Drawer
-            style={{backgroundColor:`var(--part1-background)`}}
-            anchor={"left"}
-            open={openDrawer}
-            onClose={toggleDrawer(false)}
-          >
-            <div className='drawerList'>
-              <ul>
-                <li>Home</li>
-              </ul>
-            </div>
-          </Drawer>
-        </Fragment>
         <p onClick={() => navigate("/")}>Home Manager</p>
       </div>
       <div style={{ flex: 1 }} />
@@ -108,7 +98,7 @@ const Navbar = ({ switchTheme, theme}) => {
                     height: "35px",
                     fontFamily: "poppines",
                   }}
-                  src="#"
+                  src={image}
                 >
                   {userProfile.username ? (
                     userProfile.username.slice(0, 1)
@@ -120,17 +110,26 @@ const Navbar = ({ switchTheme, theme}) => {
               {open ? (
                 <div className="expandMenu">
                   <div className="content">
-                    <p>
-                      {userProfile?.username || (
-                        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-                      )}
-                    </p>
-                    <p>
-                      {userProfile?.email || (
-                        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-                      )}
-                    </p>
-                    <p onClick={logoutHandle}>Logout</p>
+                    <div className="row" onClick={handleOpenProfile}>
+                      <AccountCircleRoundedIcon
+                       sx={{
+                        width: "22px",
+                        height: "22px",
+                        cursor: "pointer",
+                      }}
+                      />
+                      <p>Profile</p>
+                    </div>
+                    <div  onClick={logoutHandle}  className="row">
+                      <Logout 
+                       sx={{
+                        width: "18px",
+                        height: "18px",
+                        cursor: "pointer",
+                      }}
+                      />
+                      <p>Logout</p>
+                    </div>
                   </div>
                   <div className="line" />
                   <div className="theme">
@@ -196,6 +195,7 @@ const Navbar = ({ switchTheme, theme}) => {
           </>
         )}
       </div>
+      <Profile openDrawer = {openProfile} handleClose={handleCloseProfile} theme = {theme}/>
     </div>
   );
 };

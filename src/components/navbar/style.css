@@ -127,43 +127,6 @@ p{
     background-color: var(--part1-background);
 }
 
-.expandMenu1{
-    border-radius: 0.6rem;
-    box-shadow: 0px 1px 3px rgb(143 140 140 / 70%);
-    box-sizing: border-box;
-    position: absolute;
-    padding: 1rem 0;
-    left: 1rem;
-    top: 5rem;
-    min-width: 10rem;
-    background-color: white;
-}
-
-.expandMenu1>.content{
-    display: flex;
-    position: relative;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    min-width: 8rem;
-    box-sizing: border-box;
-    font-size: 1.3rem;
-    font-family: poppines, sans-serif;
-}
-
-.expandMenu1>.content>p{
-    color: #404258;
-    cursor: pointer;
-    text-align: start;
-    box-sizing: border-box;
-    padding:0.3rem 1rem;
-    width: 100%;
-}
-
-.expandMenu1>.content>p:hover{
-    background-color: #e5e5ec;
-}
-
 .expandMenu{
     border-radius: 0.6rem;
     box-shadow: 0px 1px 3px rgb(143 140 140 / 70%);
@@ -183,20 +146,23 @@ p{
     align-items: flex-start;
     min-width: 8rem;
     box-sizing: border-box;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-family: poppines, sans-serif;
 }
 
-.expandMenu>.content>p{
+.expandMenu>.content .row{
+    display: flex;
     color: #404258;
     cursor: pointer;
     text-align: start;
     box-sizing: border-box;
-    padding:0.3rem 1rem;
+    padding:0.6rem 1rem;
     width: 100%;
+    gap: 1rem;
+    align-items: center;
 }
 
-.expandMenu>.content>p:hover{
+.expandMenu>.content .row:hover{
     background-color: #e5e5ec;
 }
 
@@ -242,6 +208,35 @@ p{
 
 .drawerList>ul{
     list-style: none;
+}
+
+.drawerOuterDivUserProfile{
+    display: flex;
+    width: 80%;
+    background-color: var(--part1-background);
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1rem;
+    align-items: center;
+    min-width: 300px;
+}
+
+.UserProfileCrossIcon{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.UserProfileavatar{
+    position: relative;
+}
+
+.addPohot{
+    right: -6px;
+    bottom: -6px;
+    position: absolute;
 }
 
 

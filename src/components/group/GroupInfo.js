@@ -13,7 +13,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="down" ref={ref} {...props} />;
   });
 
-const GroupInfo = ({open, openDrawer, handleClose, groupInfo, handleClickOpen2, handleClose2, setMessage, setNotificationType, setOpenNotifi, setRerender, rerender}) => {
+const GroupInfo = ({open, openDrawer, handleClose, groupInfo, handleClickOpen2, handleClose2, setRerender, rerender}) => {
  
     const params = useParams();
  

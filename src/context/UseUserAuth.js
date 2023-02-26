@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useState, useContext, useEffect } from "react";
 
 const UserAuthContext = createContext();
@@ -14,6 +15,7 @@ export const UserAuthProvider = ({ children }) => {
   const [message, setMessage] = useState(null);
   const [openNotifi, setOpenNotifi] = useState(false);
   const [notificationType, setNotificationType] = useState("info");
+  const [image, setImage] = useState('#');
   const url = 'https://homemanager.onrender.com';
   // const url = "http://localhost:3000";
 
@@ -25,25 +27,36 @@ export const UserAuthProvider = ({ children }) => {
         reject("user not found");
       }
 
-      resolve({
-        username: localStorage.getItem("username"),
-        email: localStorage.getItem("email"),
-      });
+      resolve(localStorage.getItem("username"));
     });
   };
 
   useEffect(() => {
     localStore()
-      .then((userProfile) => {
-        if (!userProfile.username) {
+      .then((username) => {
+        if (!username) {
           setUser(null);
           setIsLoggedIn(false);
           setLoading(false);
         } else {
           // console.log(userProfile);
-          setUser(userProfile);
-          setIsLoggedIn(true);
-          setLoading(false);
+          axios.get(`${url}/users/${username}`)
+          .then((res) => {
+              console.log(res.data);
+              setUser(res.data.user);
+              setImage(res.data.user.img);
+              setIsLoggedIn(true);
+              setLoading(false);
+          })
+          .catch((err) => {
+            setUser(null);
+            setIsLoggedIn(false);
+            setLoading(false);
+            console.log(err);
+            setMessage('User not found');
+            setNotificationType('error');
+            setOpenNotifi(true);
+          });
         }
       })
       .catch((e) => {
@@ -79,7 +92,9 @@ export const UserAuthProvider = ({ children }) => {
         openNotifi,
         setOpenNotifi,
         setNotificationType,
-        notificationType
+        notificationType,
+        image,
+        setImage
       }}
     >
       {children}

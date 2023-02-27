@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import gpStyle from "./style.module.css";
 import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
 import { Avatar } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useUserAuth } from "../../context/UseUserAuth";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -10,11 +10,19 @@ import Skeleton from "@mui/material/Skeleton";
 import GroupInfo from "./GroupInfo";
 import GroupSpeedDial from "./GroupSpeedDial";
 import Calender from "./Calender";
-
+import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 
 const Group = () => {
   const params = useParams();
-  const { url, setWater, setGas, setMessage, setNotificationType, setOpenNotifi} = useUserAuth();
+  const navigate = useNavigate();
+  const {
+    url,
+    setWater,
+    setGas,
+    setMessage,
+    setNotificationType,
+    setOpenNotifi,
+  } = useUserAuth();
   const [groupInfo, setGroupInfo] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [open, setOpen] = useState(false);
@@ -70,6 +78,16 @@ const Group = () => {
       />
       <div className={gpStyle.gpbar} onClick={handleClickOpen}>
         <div className={gpStyle.gpname}>
+        <ArrowBackRoundedIcon
+              onClick={() => navigate('/')}
+              sx={{
+                cursor: "pointer",
+                fontWeight: "bold",
+                width: "25px",
+                height: "25px",
+                padding: "1rem"
+              }}
+            />
           <div className={gpStyle.gpavatar}>
             <Avatar
               sx={{
@@ -79,7 +97,7 @@ const Group = () => {
                 width: "35px",
                 height: "35px",
                 fontFamily: "poppines",
-                fontSize: "1.6rem"
+                fontSize: "1.6rem",
               }}
               src="#"
             >
@@ -125,24 +143,12 @@ const Group = () => {
           </div>
         </div>
         <div style={{ flex: 1 }} />
-        <div className={gpStyle.icon}>
-          <div>
-            <MoreVertRoundedIcon
-              sx={{
-                cursor: "pointer",
-                fontWeight: "bold",
-                width: "30px",
-                height: "30px",
-              }}
-            />
-          </div>
-        </div>
       </div>
-      <div style={{paddingTop:'5rem', boxSizing:'border-box'}}>
-      <Calender/>
+      <div style={{ paddingTop: "5rem", boxSizing: "border-box" }}>
+        <Calender />
       </div>
       <div style={{ position: "fixed", right: "5%", bottom: "3%" }}>
-        <GroupSpeedDial groupInfo={groupInfo}/>
+        <GroupSpeedDial groupInfo={groupInfo} />
       </div>
     </div>
   );

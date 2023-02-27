@@ -16,7 +16,7 @@ const Prevent = ({children}) => {
 
     return (
     <>
-      {isLoggedIn ? (<>{children}</>):(<p><>Not Logged in!</>Redirecting...</p>)}
+      {children}
     </>
   )
 }

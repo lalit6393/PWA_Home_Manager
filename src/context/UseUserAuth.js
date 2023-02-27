@@ -8,7 +8,7 @@ export const UserAuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({username: localStorage.getItem('username'), image: '#'});
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [gas, setGas] = useState([]);
   const [water, setWater] = useState([]);

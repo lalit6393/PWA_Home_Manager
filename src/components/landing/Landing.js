@@ -5,6 +5,7 @@ const Landing = () => {
   return (
     <div className={dashStyle.landing}>
       <p>Welcome to Home Manager</p>
+      <p>Go to Home page.</p>
     </div>
   )
 }

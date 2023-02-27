@@ -200,6 +200,13 @@ button:hover{
     flex-wrap: wrap;
 }
 
+.groupSkeleton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 @media screen and (max-width:400px){
     .outerBox{
         width: 100%;

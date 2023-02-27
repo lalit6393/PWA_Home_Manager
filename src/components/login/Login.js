@@ -9,7 +9,7 @@ import { useUserAuth } from '../../context/UseUserAuth';
 const Login = () => {
 
   const navigate = useNavigate();
-  const {setIsLoggedIn, setLoading, url, setUser, setMessage, setNotificationType, setOpenNotifi} = useUserAuth();
+  const {setIsLoggedIn, setLoading, url, setUser, setMessage, setNotificationType, setOpenNotifi, setImage} = useUserAuth();
   const [logging, setLogging] = useState(false);
 
   const loginHandle = (event) => {
@@ -44,6 +44,7 @@ const Login = () => {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('username', res.data.user.username);
         localStorage.setItem('email', res.data.user.email);
+        setImage(res.data.user.img);
         setUser(res.data.user);
         setIsLoggedIn(true);
         setLoading(false);

@@ -17,7 +17,7 @@ p {
 }
 
 .gpbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -119,4 +119,42 @@ p {
   background-color: aliceblue;
   padding: 1rem 2rem;
   border-radius: 3px;
+}
+
+.contentPage {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  gap: 5rem;
+  overflow-y: auto;
+  padding-top: 5rem;
+  scroll-behavior: smooth;
+}
+
+.contentPage::-webkit-scrollbar {
+  width: 0;
+}
+
+.contentPage > div:nth-child(1) {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 5rem;
+}
+.contentPage > div:nth-child(1) > div {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+.contentPage > div:nth-child(2) {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 3rem;
 }

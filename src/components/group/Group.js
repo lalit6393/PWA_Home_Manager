@@ -11,6 +11,9 @@ import GroupInfo from "./GroupInfo";
 import GroupSpeedDial from "./GroupSpeedDial";
 import Calender from "./Calender";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import Graph from "./Graph";
+import PropaneTankIcon from "@mui/icons-material/PropaneTank";
+import OpacityIcon from "@mui/icons-material/Opacity";
 
 const Group = () => {
   const params = useParams();
@@ -144,8 +147,15 @@ const Group = () => {
         </div>
         <div style={{ flex: 1 }} />
       </div>
-      <div style={{ paddingTop: "5rem", boxSizing: "border-box" }}>
+      <div className={gpStyle.contentPage}>
+        <div>
+          <div><PropaneTankIcon style={{ color: "red" }}/> Gas</div>
+          <div><OpacityIcon style={{ color: "blue" }}/> Water</div>
+        </div>
+        <div>
         <Calender />
+        <Graph/>
+        </div>
       </div>
       <div style={{ position: "fixed", right: "5%", bottom: "3%" }}>
         <GroupSpeedDial groupInfo={groupInfo} />

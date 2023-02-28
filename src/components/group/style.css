@@ -45,3 +45,8 @@
     padding: 1rem;
     border-bottom: 1.5px solid #ddd7d7;
 }
+
+g text>tspan{
+    color: var(--text-primary);
+    fill: var(--text-primary) !important;
+}

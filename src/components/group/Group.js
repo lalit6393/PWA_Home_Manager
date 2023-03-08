@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import gpStyle from "./style.module.css";
-import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
 import { Avatar } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -18,14 +17,7 @@ import OpacityIcon from "@mui/icons-material/Opacity";
 const Group = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const {
-    url,
-    setWater,
-    setGas,
-    setMessage,
-    setNotificationType,
-    setOpenNotifi,
-  } = useUserAuth();
+  const { url, setWater, setGas } = useUserAuth();
   const [groupInfo, setGroupInfo] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [open, setOpen] = useState(false);
@@ -73,24 +65,20 @@ const Group = () => {
         groupInfo={groupInfo}
         handleClickOpen2={handleClickOpen2}
         handleClose2={handleClose2}
-        setMessage={setMessage}
-        setNotificationType={setNotificationType}
-        setOpenNotifi={setOpenNotifi}
         rerender={rerender}
         setRerender={setRerender}
       />
       <div className={gpStyle.gpbar} onClick={handleClickOpen}>
         <div className={gpStyle.gpname}>
-        <ArrowBackRoundedIcon
-              onClick={() => navigate('/')}
-              sx={{
-                cursor: "pointer",
-                fontWeight: "bold",
-                width: "25px",
-                height: "25px",
-                padding: "1rem"
-              }}
-            />
+          <ArrowBackRoundedIcon
+            onClick={() => navigate("/")}
+            sx={{
+              cursor: "pointer",
+              width: "25px",
+              height: "25px",
+              padding: "1rem",
+            }}
+          />
           <div className={gpStyle.gpavatar}>
             <Avatar
               sx={{
@@ -149,12 +137,16 @@ const Group = () => {
       </div>
       <div className={gpStyle.contentPage}>
         <div>
-          <div><PropaneTankIcon style={{ color: "red" }}/> Gas</div>
-          <div><OpacityIcon style={{ color: "blue" }}/> Water</div>
+          <div>
+            <PropaneTankIcon style={{ color: "red" }} /> Gas
+          </div>
+          <div>
+            <OpacityIcon style={{ color: "blue" }} /> Water
+          </div>
         </div>
         <div>
-        <Calender />
-        <Graph/>
+          <Calender />
+          <Graph />
         </div>
       </div>
       <div style={{ position: "fixed", right: "5%", bottom: "3%" }}>

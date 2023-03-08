@@ -28,9 +28,9 @@ function App() {
 
   return (
     <div className="App" data-theme = {theme}>
-      <UserAuthProvider>
+      <UserAuthProvider appTheme={theme}>
       <Notifications/>
-      <Navbar switchTheme = {switchTheme} theme={theme}/>
+      <Navbar switchTheme = {switchTheme}/>
       <Routes>
         <Route path="/" element={<Prevent><Home/></Prevent>}/>
         <Route path="/dashboard" element={<Landing/>}/>

@@ -3,20 +3,23 @@ import { createContext, useState, useContext, useEffect } from "react";
 
 const UserAuthContext = createContext();
 
-export const UserAuthProvider = ({ children }) => {
-
+export const UserAuthProvider = ({ children, appTheme }) => {
+  const [theme, setTheme] = useState(appTheme);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState({username: localStorage.getItem('username'), image: '#'});
+  const [user, setUser] = useState({
+    username: localStorage.getItem("username"),
+    image: "#",
+  });
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [gas, setGas] = useState([]);
   const [water, setWater] = useState([]);
   const [message, setMessage] = useState(null);
   const [openNotifi, setOpenNotifi] = useState(false);
   const [notificationType, setNotificationType] = useState("info");
-  const [image, setImage] = useState('#');
-  const url = 'https://homemanager.onrender.com';
+  const [image, setImage] = useState("#");
+  const url = "https://homemanager.onrender.com";
   // const url = "http://localhost:3000";
 
   //checking user in localstorage
@@ -26,10 +29,14 @@ export const UserAuthProvider = ({ children }) => {
       if (!localStorage.getItem("token")) {
         reject("user not found");
       }
-
       resolve(localStorage.getItem("username"));
     });
   };
+
+  console.log("useContext");
+  useEffect(() => {
+    setTheme(appTheme);
+  }, [appTheme]);
 
   useEffect(() => {
     localStore()
@@ -40,23 +47,24 @@ export const UserAuthProvider = ({ children }) => {
           setLoading(false);
         } else {
           // console.log(userProfile);
-          axios.get(`${url}/users/${username}`)
-          .then((res) => {
+          axios
+            .get(`${url}/users/${username}`)
+            .then((res) => {
               console.log(res.data);
               setUser(res.data.user);
               setImage(res.data.user.img);
               setIsLoggedIn(true);
               setLoading(false);
-          })
-          .catch((err) => {
-            setUser(null);
-            setIsLoggedIn(false);
-            setLoading(false);
-            console.log(err);
-            setMessage('User not found');
-            setNotificationType('error');
-            setOpenNotifi(true);
-          });
+            })
+            .catch((err) => {
+              setUser(null);
+              setIsLoggedIn(false);
+              setLoading(false);
+              console.log(err);
+              setMessage("User not found");
+              setNotificationType("error");
+              setOpenNotifi(true);
+            });
         }
       })
       .catch((e) => {
@@ -66,8 +74,6 @@ export const UserAuthProvider = ({ children }) => {
         console.log(e);
       });
   }, []);
-
-
 
   return (
     <UserAuthContext.Provider
@@ -85,7 +91,7 @@ export const UserAuthProvider = ({ children }) => {
         token,
         water,
         setWater,
-        gas, 
+        gas,
         setGas,
         message,
         setMessage,
@@ -94,7 +100,8 @@ export const UserAuthProvider = ({ children }) => {
         setNotificationType,
         notificationType,
         image,
-        setImage
+        setImage,
+        theme,
       }}
     >
       {children}

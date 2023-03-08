@@ -9,16 +9,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import axios from "axios";
 import { useUserAuth } from "../../../context/UseUserAuth";
 
-const NewGroup = ({
-  open,
-  handleClose,
-  setMessage,
-  setNotificationType,
-  setOpenNotifi,
-  setRerender,
-  rerender
-}) => {
-  const { url, user } = useUserAuth();
+const NewGroup = ({ open, handleClose, setRerender, rerender }) => {
+  const { url, user, setMessage, setNotificationType, setOpenNotifi } =
+    useUserAuth();
   const [gpName, setGpName] = useState("");
 
   const createNewGroup = () => {

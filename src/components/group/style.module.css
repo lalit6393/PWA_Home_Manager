@@ -8,7 +8,7 @@ p {
 }
 
 .Group {
-  padding-top: 10%;
+  padding-top: 6rem;
   display: flex;
   height: 100%;
   justify-content: space-around;

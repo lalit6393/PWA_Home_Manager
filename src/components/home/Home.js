@@ -9,15 +9,7 @@ import { Avatar, Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const {
-    url,
-    user,
-    setGas,
-    setWater,
-    setMessage,
-    setNotificationType,
-    setOpenNotifi,
-  } = useUserAuth();
+  const { url, user, setGas, setWater } = useUserAuth();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [rerender, setRerender] = useState(0);
@@ -60,7 +52,7 @@ const Home = () => {
           {loadingGroup ? (
             <div className={homeStyle.groupSkeleton}>
               <Skeleton
-               variant="circular"
+                variant="circular"
                 width="40px"
                 height="40px"
                 animation="wave"
@@ -116,9 +108,6 @@ const Home = () => {
         <NewGroup
           open={open}
           handleClose={handleClose}
-          setMessage={setMessage}
-          setNotificationType={setNotificationType}
-          setOpenNotifi={setOpenNotifi}
           setRerender={setRerender}
           rerender={rerender}
         />

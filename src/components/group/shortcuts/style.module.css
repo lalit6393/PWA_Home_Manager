@@ -1,0 +1,83 @@
+.pageDiv{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding-top: 10rem;
+    background-color: var(--part1-background);
+    overflow-y: auto;
+}
+
+.secondDiv{
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.form{
+    border: 1px solid lightgrey;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    width: 280px;
+}
+
+.form div{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 100%;
+    font-size: 1.6rem;
+    gap: 1rem;
+    color: var(--text-primary);
+}
+
+label{
+    text-align: left;
+}
+
+.form>div input{
+    padding: 20px 12px;
+    box-sizing: border-box;
+    color: var(--text-primary);
+}
+
+.form>div fieldset{
+    border-color: lightgrey;
+}
+
+.list>ul{
+    list-style: none;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    padding-inline-start: 0;
+    width: 280px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.list>ul li{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 1rem 1.6rem;
+    border: 1.5px solid lightgrey;
+}
+
+.list>ul li:first-child{
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.list>ul li:last-child{
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}

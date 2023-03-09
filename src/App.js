@@ -15,6 +15,7 @@ import Prevent from './components/Prevent';
 import Landing from './components/landing/Landing';
 import Group from './components/group/Group';
 import PageNotFound from './components/page_not_found/PageNotFound';
+import Shortcuts from './components/group/shortcuts/Shortcuts';
 
 function App() {
 
@@ -32,8 +33,9 @@ function App() {
       <Notifications/>
       <Navbar switchTheme = {switchTheme}/>
       <Routes>
-        <Route path="/" element={<Prevent><Home/></Prevent>}/>
-        <Route path="/dashboard" element={<Landing/>}/>
+        <Route path="/" element={<Prevent><Home/></Prevent>}>
+        </Route>
+        <Route path="dashboard" element={<Landing/>}/>
         <Route path="login" element={<Login/>}/>
         <Route path="register" element={<Register/>}/>
         <Route path="login/forget" element={<ForgetPass/>}/>
@@ -41,6 +43,7 @@ function App() {
         <Route path="/verification/:uid" element={<EmailVerify/>}/> 
         <Route path="register/resend/:username" element={<ResendEmail/>}/>
         <Route path='/gp/:gpid' element={<Group/>}/>
+        <Route path='/gp/:gpid/shortcuts' element={<Shortcuts/>}/>
         <Route path='*' element={<PageNotFound/>}/>
       </Routes>
       </UserAuthProvider>

@@ -48,6 +48,7 @@ const Group = () => {
 
   const handleMenuClose = () => {
     setMenuOpen(false);
+    navigate(`/gp/${params.gpid}/shortcuts`);
   };
 
   useEffect(() => {

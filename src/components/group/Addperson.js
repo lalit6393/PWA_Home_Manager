@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -10,8 +10,7 @@ import axios from "axios";
 import { useUserAuth } from "../../context/UseUserAuth";
 
 const Addperson = ({ open, handleClose, setRerender, rerender, groupId }) => {
-  const { url, setMessage, setNotificationType, setOpenNotifi } =
-    useUserAuth();
+  const { url, setMessage, setNotificationType, setOpenNotifi } = useUserAuth();
   const [gpName, setGpName] = useState("");
 
   const addPerson = () => {
@@ -40,31 +39,55 @@ const Addperson = ({ open, handleClose, setRerender, rerender, groupId }) => {
   return (
     <div>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle fontSize={"1.6rem"} fontWeight={600}>
+        <DialogTitle
+          sx={{ fontSize: "1.6rem", fontWeight: "600", fontFamily: "poppines" }}
+        >
           Add people
         </DialogTitle>
         <DialogContent>
-          <DialogContentText fontSize={"1.4rem"}>
+          <DialogContentText sx={{ fontSize: "1.4rem", marginBottom: "2rem" }}>
             Create a new group to easily manage your home and stay up-to-date.
           </DialogContentText>
           <TextField
-            fontSize="1.4rem"
             autoComplete="off"
-            margin="dense"
             id="name"
             label="Username"
             type="text"
             fullWidth
-            variant="standard"
+            variant="outlined"
             value={gpName}
             onChange={(e) => setGpName(e.target.value)}
+            InputProps={{
+              style: { fontSize: "1.4rem", fontFamily: "poppines" },
+            }}
+            InputLabelProps={{
+              style: { fontSize: "1.4rem" },
+            }}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} fontSize={"1.3rem"}>
+          <Button
+            onClick={handleClose}
+            variant="outlined"
+            size="medium"
+            sx={{
+              fontSize: "1.2rem",
+              fontFamily: "poppines",
+              fontWeight: "600",
+            }}
+          >
             Cancel
           </Button>
-          <Button onClick={addPerson} fontSize={"1.3rem"}>
+          <Button
+            onClick={addPerson}
+            variant="outlined"
+            size="medium"
+            sx={{
+              fontSize: "1.2rem",
+              fontFamily: "poppines",
+              fontWeight: "600",
+            }}
+          >
             Add
           </Button>
         </DialogActions>

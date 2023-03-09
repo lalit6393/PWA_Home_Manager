@@ -7,6 +7,7 @@ import axios from "axios";
 import { useUserAuth } from "../../context/UseUserAuth";
 import { Avatar, Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import homeStyles from "../style";
 
 const Home = () => {
   const { url, user, setGas, setWater } = useUserAuth();
@@ -72,23 +73,11 @@ const Home = () => {
                 group.map((grp) => {
                   return (
                     <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
                       key={grp._id}
                       onClick={() => navigate(`/gp/${grp._id}`)}
                     >
                       <Avatar
-                        sx={{
-                          bgcolor: "#8774e1",
-                          cursor: "pointer",
-                          fontWeight: "bold",
-                          width: "40px",
-                          height: "40px",
-                          fontFamily: "poppines",
-                        }}
+                        sx={homeStyles.avatar40x40}
                         src="#"
                       >
                         {grp.grupName.slice(0, 1)}

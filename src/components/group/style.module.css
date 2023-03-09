@@ -67,7 +67,7 @@ p {
 .gpname {
   font-size: 1.7rem;
   font-weight: 600;
-  width: auto;
+  width: -webkit-fill-available;
   min-width: 11rem;
   cursor: pointer;
   display: flex;
@@ -96,6 +96,7 @@ p {
   list-style: none;
   display: flex;
   flex-direction: column;
+  padding-inline-start: 0;
 }
 
 .gpmember > ul > li {

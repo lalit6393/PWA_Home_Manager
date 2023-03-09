@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import gpStyle from "./style.module.css";
-import { Avatar } from "@mui/material";
+import { Avatar, IconButton, MenuItem, Menu } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useUserAuth } from "../../context/UseUserAuth";
@@ -13,6 +13,8 @@ import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import Graph from "./Graph";
 import PropaneTankIcon from "@mui/icons-material/PropaneTank";
 import OpacityIcon from "@mui/icons-material/Opacity";
+import BarChartRoundedIcon from "@mui/icons-material/BarChartRounded";
+import styles from "../style";
 
 const Group = () => {
   const params = useParams();
@@ -21,6 +23,7 @@ const Group = () => {
   const [groupInfo, setGroupInfo] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [rerender, setRerender] = useState(0);
 
   const handleClickOpen = () => {
@@ -37,6 +40,14 @@ const Group = () => {
 
   const handleClose2 = () => {
     setOpen(false);
+  };
+
+  const handleMenuOpen = () => {
+    setMenuOpen(true);
+  };
+
+  const handleMenuClose = () => {
+    setMenuOpen(false);
   };
 
   useEffect(() => {
@@ -68,28 +79,25 @@ const Group = () => {
         rerender={rerender}
         setRerender={setRerender}
       />
-      <div className={gpStyle.gpbar} onClick={handleClickOpen}>
-        <div className={gpStyle.gpname}>
-          <ArrowBackRoundedIcon
-            onClick={() => navigate("/")}
-            sx={{
+      <div className={gpStyle.gpbar}>
+        <div className={gpStyle.gpname} onClick={handleClickOpen}>
+          <IconButton
+              onClick={() => navigate("/")}
+             sx={{
               cursor: "pointer",
+              color: "var(--text-black-white)",
+            }}
+          >
+          <ArrowBackRoundedIcon
+            sx={{
               width: "25px",
               height: "25px",
-              padding: "1rem",
             }}
           />
+          </IconButton>
           <div className={gpStyle.gpavatar}>
             <Avatar
-              sx={{
-                bgcolor: "#8774e1",
-                cursor: "pointer",
-                fontWeight: "bold",
-                width: "35px",
-                height: "35px",
-                fontFamily: "poppines",
-                fontSize: "1.6rem",
-              }}
+              sx={styles.avatarStyle}
               src="#"
             >
               {groupInfo ? (
@@ -133,7 +141,39 @@ const Group = () => {
             </p>
           </div>
         </div>
-        <div style={{ flex: 1 }} />
+        <IconButton
+          onClick={handleMenuOpen}
+          sx={{
+            cursor: "pointer",
+            color: "var(--text-black-white)",
+          }}
+        >
+          <BarChartRoundedIcon
+            sx={{
+              width: "25px",
+              height: "25px",
+              transform: "rotate(-90deg)",
+            }}
+          />
+        </IconButton>
+        <Menu
+        id="basic-menu"
+        open={menuOpen}
+        onClose={handleMenuClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        <MenuItem onClick={handleMenuClose}  sx={{fontSize:"1.4rem"}}>Shortcuts</MenuItem>
+      </Menu>
       </div>
       <div className={gpStyle.contentPage}>
         <div>
